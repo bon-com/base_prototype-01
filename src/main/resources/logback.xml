@@ -13,7 +13,7 @@
 	<logger name="org.springframework.jndi" level="WARN" />
 
 	<!-- ログレベルの設定 -->
-	<root level="DEBUG">
+	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>
