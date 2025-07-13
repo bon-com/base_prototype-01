@@ -10,7 +10,6 @@
 	<%-- DIコンテナで管理しているセッションスコープBeanはSpELを利用して参照する --%>
 	<spring:eval var="cart" expression="@cart"/><%-- オブジェクトだけ取得したり --%>
 	<h5>カートの数量：　${cart.total}</h5>
-	<p>カートの数量: ${itemCount}</p>
 	<hr />
 	<table>
 		<tr>
