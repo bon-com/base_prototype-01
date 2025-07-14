@@ -22,15 +22,15 @@ public class ItemService {
 
     /** 商品一覧取得 */
     public List<ItemDto> findAll() {
-        List<ItemDto> items = new ArrayList<>();
+        List<ItemDto> itemList = new ArrayList<>();
 
-        jdbcItemDao.findAll().forEach(i -> {
+        jdbcItemDao.findAll().forEach(item -> {
             var dto = new ItemDto();
-            BeanUtils.copyProperties(i, dto);
-            items.add(dto);
+            BeanUtils.copyProperties(item, dto);
+            itemList.add(dto);
         });
 
-        return items;
+        return itemList;
     }
 
     /** 商品検索 */

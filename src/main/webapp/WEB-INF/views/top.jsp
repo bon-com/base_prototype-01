@@ -11,5 +11,8 @@
 	<ul>
 		<li>カートの利用：　<a href="<c:url value='/items/'/>">こちら</a></li>
 	</ul>
+	<ul>
+		<li>購入履歴：　<a href="<c:url value='/history/'/>">こちら</a></li>
+	</ul>
 </body>
 </html>

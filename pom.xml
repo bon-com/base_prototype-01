@@ -72,6 +72,25 @@
 			<version>2.2.224</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- トランザクション -->
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>5.1.20.RELEASE</version>
+		</dependency>
+		<!-- AspectJランタイム -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.9.9</version>
+		</dependency>
+		<!-- AspectJウィーバー（オプション） -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.9</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>base_prototype</finalName>

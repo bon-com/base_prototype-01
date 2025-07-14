@@ -38,6 +38,8 @@
 		</c:forEach>
 	</table>
 	<br>
-	<a href="${pageContext.request.contextPath}/order/">購入確認</a>
+	<a href="${pageContext.request.contextPath}/order/">購入確認</a><br>
+	<hr />
+	<a href="<c:url value='/'/>">TOP</a>
 </body>
 </html>

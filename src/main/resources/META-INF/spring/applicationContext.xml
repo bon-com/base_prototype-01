@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
          http://www.springframework.org/schema/beans
          http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -8,8 +8,11 @@
          http://www.springframework.org/schema/context/spring-context.xsd
          http://www.springframework.org/schema/jdbc
          http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+         http://www.springframework.org/schema/tx
+         http://www.springframework.org/schema/tx/spring-tx.xsd
          http://www.springframework.org/schema/aop
-         http://www.springframework.org/schema/aop/spring-aop.xsd">
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         ">
 
 	<!-- コンポーネントスキャン -->
 	<context:component-scan base-package="com.example.prototype.biz" />
@@ -27,4 +30,19 @@
 		<jdbc:script location="classpath:sql/schema.sql" />
 		<jdbc:script location="classpath:sql/data.sql" />
 	</jdbc:initialize-database>
+	<!-- トランザクションマネージャ -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- トランザクション定義設定 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="insert*" propagation="REQUIRED" isolation="READ_COMMITTED" timeout="10" read-only="false" rollback-for="Exception" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- トランザクション処理を行う設定 -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* *..*Service.*(..))" />
+	</aop:config>
 </beans>

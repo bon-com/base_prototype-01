@@ -12,31 +12,39 @@ import com.example.prototype.entity.Item;
 
 @Repository
 public class JdbcItemDao {
-	@Autowired
-	private NamedParameterJdbcTemplate  namedParameterJdbcTemplate;
-	
-	private static final RowMapper<Item> itemRowMapper = (rs, i) -> {
-		var item = new Item();
-		item.setId(rs.getInt("id"));
-		item.setName(rs.getString("name"));
-		item.setPrice(rs.getInt("price"));
-		return item;
-	};
-	
-	public List<Item> findAll() {
-		// SQL文
-		String sql = "SELECT id, name, price FROM item";
-		// 実行
-		return namedParameterJdbcTemplate.query(sql, itemRowMapper);
-	}
-	
-	public Item findById(int id) {
-		// SQL文
-		String sql = "SELECT id, name, price FROM item WHERE id = :id";
-		// パラメータ設定
-		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("id", id);
-		// 実行
-		return namedParameterJdbcTemplate.queryForObject(sql, param, itemRowMapper);
-	}
+
+    @Autowired
+    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    /** エンティティマッパー */
+    private static final RowMapper<Item> itemRowMapper = (rs, i) -> {
+        var item = new Item();
+        item.setId(rs.getInt("id"));
+        item.setName(rs.getString("name"));
+        item.setPrice(rs.getInt("price"));
+        return item;
+    };
+
+    /**
+     * 商品全件検索
+     * @return
+     */
+    public List<Item> findAll() {
+        var sql = "SELECT id, name, price FROM item";
+        // 実行
+        return namedParameterJdbcTemplate.query(sql, itemRowMapper);
+    }
+
+    /**
+     * 商品ID検索
+     * @param id
+     * @return
+     */
+    public Item findById(int id) {
+        var sql = "SELECT id, name, price FROM item WHERE id = :id";
+        // パラメータ設定
+        MapSqlParameterSource param = new MapSqlParameterSource();
+        param.addValue("id", id);
+        // 実行
+        return namedParameterJdbcTemplate.queryForObject(sql, param, itemRowMapper);
+    }
 }
