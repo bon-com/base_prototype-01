@@ -11,21 +11,21 @@ import com.example.prototype.biz.service.ItemService;
 @Controller
 @RequestMapping("items")
 public class ItemController {
-	
-	/** 商品サービス */
-	@Autowired
-	private ItemService itemService;
 
-	/**
-	 * 商品一覧表示
-	 * @param model
-	 * @return
-	 */
-	@GetMapping(value = "/")
-	public String items(Model model) {
-		// 商品一覧
-		model.addAttribute("items", itemService.findAll());
+    /** 商品サービス */
+    @Autowired
+    private ItemService itemService;
 
-		return "items";
-	}
+    /**
+     * 商品一覧表示
+     * @param model
+     * @return
+     */
+    @GetMapping(value = "/")
+    public String items(Model model) {
+        // 商品一覧
+        model.addAttribute("items", itemService.findAll());
+
+        return "items";
+    }
 }

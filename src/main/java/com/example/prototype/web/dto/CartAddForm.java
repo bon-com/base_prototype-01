@@ -7,7 +7,7 @@ import lombok.Data;
  */
 @Data
 public class CartAddForm {
-	/** 商品ID */
+    /** 商品ID */
     private int itemId;
     /** 数量 */
     private int quantity;
