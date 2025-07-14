@@ -8,14 +8,14 @@ import lombok.Data;
  * カートクラス
  */
 @Data
-public class Cart {
+public class CartDto {
 	/** 商品毎の情報マップ */
-	private Map<String, CartItem> items = new LinkedHashMap<>();
+	private Map<Integer, CartItemDto> items = new LinkedHashMap<>();
 	
 	/** カート内の数量を取得 */
 	public int getTotal() {
 		return items.values().stream()
-				.mapToInt(CartItem::getQuantity)
+				.mapToInt(CartItemDto::getQuantity)
 				.sum();
 	}
 }

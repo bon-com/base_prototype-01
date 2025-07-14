@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.prototype.biz.service.CartService;
-import com.example.prototype.web.dto.Cart;
+import com.example.prototype.web.dto.CartDto;
 
 @Controller
 @RequestMapping("order")
@@ -17,7 +17,7 @@ public class OrderController {
 	
 	/** カート（セッション管理） */
 	@Autowired
-	private Cart cart;
+	private CartDto cart;
 	/** カートサービス */
 	@Autowired
 	private CartService cartService;

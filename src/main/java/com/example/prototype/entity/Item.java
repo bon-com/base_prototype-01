@@ -1,16 +1,18 @@
-package com.example.prototype.web.dto;
+package com.example.prototype.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * 商品クラス
+ * 商品エンティティ
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Item {
 	/** 商品ID */
-	private String id;
+	private int id;
 	/** 商品名 */
 	private String name;
 	/** 値段 */

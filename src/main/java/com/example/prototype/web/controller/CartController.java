@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.prototype.biz.service.CartService;
 import com.example.prototype.biz.service.ItemService;
-import com.example.prototype.web.dto.Cart;
 import com.example.prototype.web.dto.CartAddForm;
+import com.example.prototype.web.dto.CartDto;
 
 @Controller
 @RequestMapping("cart")
@@ -18,7 +18,7 @@ public class CartController {
 	
 	/** カート（セッション管理） */
 	@Autowired
-	private Cart cart;
+	private CartDto cart;
 	/** 商品サービス */
 	@Autowired
 	private ItemService itemService;
@@ -49,7 +49,7 @@ public class CartController {
 	 * @return
 	 */
 	@GetMapping(value = "/delete/{id}")
-	public String deleteItem(@PathVariable String id) {
+	public String deleteItem(@PathVariable int id) {
 		cartService.deleteItem(cart, id);
 		return "redirect:/order/";
 	}

@@ -8,9 +8,9 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class CartItem {
+public class CartItemDto {
 	/** 商品 */
-	private Item item;
+	private ItemDto item;
 	/** 数量 */
 	private int quantity;
 	
