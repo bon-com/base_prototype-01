@@ -1,4 +1,4 @@
-package com.example.prototype.web.dto;
+package com.example.prototype.web.dto.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

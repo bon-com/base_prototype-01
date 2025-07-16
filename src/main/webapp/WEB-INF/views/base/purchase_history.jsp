@@ -8,16 +8,14 @@
 <body>
 	<h3>購入履歴一覧</h3>
 	<hr />
-	<form method="get" action="purchase-history">
+	<form:form method="get" modelAttribute="historyForm" action="${pageContext.request.contextPath}/history/purchase-history">
 		<label for="date">購入日：</label>
-		<select name="purchaseDate" id="date">
-			<option value="">選択してください</option>
-			<c:forEach var="purchaseDate" items="${availableDates}">
-				<option value="${purchaseDate}">${purchaseDate}</option>
-			</c:forEach>
-		</select>
-		<button type="submit">検索</button>
-	</form>
+		<form:select path="purchaseDate" id="date">
+			<form:option value="" label="選択してください" />
+			<form:options items="${availableDates}" />
+		</form:select>
+		<button type="submit">検索</button>　<form:errors path="purchaseDate"/>
+	</form:form>
 	<c:if test="${not empty purchaseHistory}">
 		<hr />
 		<h4>購入日： ${purchaseHistory.purchaseDate}</h4>

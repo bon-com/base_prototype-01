@@ -1,13 +1,13 @@
-package com.example.prototype.biz.service;
+package com.example.prototype.biz.service.base;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.prototype.web.dto.CartDto;
-import com.example.prototype.web.dto.CartItemDto;
-import com.example.prototype.web.dto.ItemDto;
+import com.example.prototype.web.dto.base.CartDto;
+import com.example.prototype.web.dto.base.CartItemDto;
+import com.example.prototype.web.dto.base.ItemDto;
 
 /**
  * カートサービス

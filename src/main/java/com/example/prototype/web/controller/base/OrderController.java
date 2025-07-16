@@ -1,4 +1,4 @@
-package com.example.prototype.web.controller;
+package com.example.prototype.web.controller.base;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,9 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.prototype.biz.service.CartService;
-import com.example.prototype.biz.service.OrderService;
-import com.example.prototype.web.dto.CartDto;
+import com.example.prototype.biz.service.base.CartService;
+import com.example.prototype.biz.service.base.OrderService;
+import com.example.prototype.biz.utils.MessageUtil;
+import com.example.prototype.web.dto.base.CartDto;
 
 @Controller
 @RequestMapping("order")
@@ -25,6 +26,9 @@ public class OrderController {
     /** 注文サービス */
     @Autowired
     private OrderService orderService;
+    /** メッセージユーティリティ */
+    @Autowired
+    private MessageUtil messageUtil;
 
     /**
      * 注文内容確認画面の表示
@@ -33,12 +37,14 @@ public class OrderController {
      */
     @GetMapping(value = "/")
     public String confirm(Model model) {
-        // カート情報
+        // カート情報を取得
         model.addAttribute("cartitems", cartService.getAllItems(cart));
-        // 合計金額
-        model.addAttribute("totalPrice", cartService.getTotalPrice(cart));
+        // 合計金額とメッセージを取得
+        int totalPrice = cartService.getTotalPrice(cart); 
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("totalPriceMsg", messageUtil.getMessage("totalPrice.msg", new Object[] {totalPrice}));
 
-        return "confirm";
+        return "base/confirm";
     }
 
     /**
@@ -55,6 +61,6 @@ public class OrderController {
 
         // カート情報をセッションから削除
         session.removeAttribute("scopedTarget.cart");
-        return "complete";
+        return "base/complete";
     }
 }

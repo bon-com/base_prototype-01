@@ -1,4 +1,4 @@
-package com.example.prototype.biz.dao;
+package com.example.prototype.biz.dao.base;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.example.prototype.entity.Item;
+import com.example.prototype.entity.base.Item;
 
 @Repository
 public class JdbcItemDao {

@@ -24,7 +24,7 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<h5>合計：　${totalPrice}円</h5>
+	<h5>${totalPriceMsg}</h5>
 	<hr />
 	<c:choose>
 	<c:when test="${totalPrice != 0}">

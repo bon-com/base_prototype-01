@@ -7,7 +7,7 @@
 <title>TOP</title>
 </head>
 <body>
-	<h3>ベースプロジェクト</h3>
+	<h3>${greeting}</h3>
 	<ul>
 		<li>カートの利用：　<a href="<c:url value='/items/'/>">こちら</a></li>
 	</ul>

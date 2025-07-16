@@ -1,4 +1,4 @@
-package com.example.prototype.biz.dao;
+package com.example.prototype.biz.dao.base;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,8 +8,8 @@ import java.util.Optional;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
-import com.example.prototype.entity.PurchaseHistory;
-import com.example.prototype.entity.PurchaseItem;
+import com.example.prototype.entity.base.PurchaseHistory;
+import com.example.prototype.entity.base.PurchaseItem;
 
 /**
  * 購入履歴、購入商品履歴テーブルの結合情報をエンティティにマッピング

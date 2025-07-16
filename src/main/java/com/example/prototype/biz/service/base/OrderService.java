@@ -1,4 +1,4 @@
-package com.example.prototype.biz.service;
+package com.example.prototype.biz.service.base;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,11 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.prototype.biz.dao.JdbcPurchaseHistoryDao;
-import com.example.prototype.biz.dao.JdbcPurchaseItemDao;
-import com.example.prototype.entity.PurchaseHistory;
-import com.example.prototype.entity.PurchaseItem;
-import com.example.prototype.web.dto.CartDto;
+import com.example.prototype.biz.dao.base.JdbcPurchaseHistoryDao;
+import com.example.prototype.biz.dao.base.JdbcPurchaseItemDao;
+import com.example.prototype.entity.base.PurchaseHistory;
+import com.example.prototype.entity.base.PurchaseItem;
+import com.example.prototype.web.dto.base.CartDto;
 
 /**
  * 注文サービス

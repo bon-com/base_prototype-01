@@ -1,19 +1,21 @@
-package com.example.prototype.web.controller;
+package com.example.prototype.web.controller.base;
 
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.prototype.biz.service.PurchaseHistoryService;
-import com.example.prototype.web.dto.PurchaseHistoryDto;
+import com.example.prototype.biz.service.base.PurchaseHistoryService;
+import com.example.prototype.web.dto.base.PurchaseHistoryConditionsForm;
+import com.example.prototype.web.dto.base.PurchaseHistoryDto;
 
 @Controller
 @RequestMapping("history")
@@ -27,8 +29,13 @@ public class PurchaseHistoryController {
      * @return
      */
     @ModelAttribute("availableDates")
-    public List<LocalDate> getAvailableDates() {
+    public List<LocalDate> setAvailableDates() {
         return purchaseHistoryService.getPurchaseDateList();
+    }
+    
+    @ModelAttribute("historyForm")
+    public PurchaseHistoryConditionsForm setPurchaseHistoryConditionsForm() {
+        return new PurchaseHistoryConditionsForm();
     }
     
     /**
@@ -38,7 +45,7 @@ public class PurchaseHistoryController {
      */
     @GetMapping(value = "/")
     public String historyDate(Model model) {
-        return "purchase_history";
+        return "base/purchase_history";
     }
     
     /**
@@ -48,17 +55,16 @@ public class PurchaseHistoryController {
      * @return
      */
     @GetMapping(value = "purchase-history")
-    public String history(@RequestParam("purchaseDate") String purchaseDateStr, Model model) {
-        if (!StringUtils.isEmpty(purchaseDateStr)) {
+    public String history(@Valid @ModelAttribute("historyForm") PurchaseHistoryConditionsForm form, BindingResult rs, Model model) {
+        if (!rs.hasErrors()) {
             // 購入日付検索
-            var purchaseDate = LocalDate.parse(purchaseDateStr);
-            PurchaseHistoryDto purchaseHistory = purchaseHistoryService.findPurchaseHistory(purchaseDate);
+            PurchaseHistoryDto purchaseHistory = purchaseHistoryService.findPurchaseHistory(form.getPurchaseDate());
             model.addAttribute("purchaseHistory", purchaseHistory);
             
-            // 合計金額
+            // 購入商品履歴から合計金額取得
             int totalPrice = purchaseHistoryService.getTotalPrice(purchaseHistory.getItemList());
             model.addAttribute("totalPrice", totalPrice);
         }
-        return "purchase_history";
+        return "base/purchase_history";
     }
 }

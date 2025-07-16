@@ -1,4 +1,4 @@
-package com.example.prototype.web.dto;
+package com.example.prototype.entity.base;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -8,14 +8,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 購入履歴クラス
+ * 購入履歴エンティティ
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PurchaseHistoryDto {
+public class PurchaseHistory {
+    /** 購入履歴ID */
+    private int id;
     /** 購入日時 */
     private LocalDate purchaseDate;
     /** 購入商品 */
-    private List<PurchaseItemDto> itemList;
+    private List<PurchaseItem> itemList;
+
 }

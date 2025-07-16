@@ -1,4 +1,4 @@
-package com.example.prototype.biz.dao;
+package com.example.prototype.biz.dao.base;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import com.example.prototype.entity.PurchaseHistory;
+import com.example.prototype.entity.base.PurchaseHistory;
 
 @Repository
 public class JdbcPurchaseHistoryDao {

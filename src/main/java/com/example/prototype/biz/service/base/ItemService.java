@@ -1,4 +1,4 @@
-package com.example.prototype.biz.service;
+package com.example.prototype.biz.service.base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.prototype.biz.dao.JdbcItemDao;
-import com.example.prototype.entity.Item;
-import com.example.prototype.web.dto.ItemDto;
+import com.example.prototype.biz.dao.base.JdbcItemDao;
+import com.example.prototype.entity.base.Item;
+import com.example.prototype.web.dto.base.ItemDto;
 
 /**
  * 商品サービス

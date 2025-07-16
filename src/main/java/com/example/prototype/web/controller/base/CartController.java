@@ -1,4 +1,4 @@
-package com.example.prototype.web.controller;
+package com.example.prototype.web.controller.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.prototype.biz.service.CartService;
-import com.example.prototype.biz.service.ItemService;
-import com.example.prototype.web.dto.CartAddForm;
-import com.example.prototype.web.dto.CartDto;
+import com.example.prototype.biz.service.base.CartService;
+import com.example.prototype.biz.service.base.ItemService;
+import com.example.prototype.web.dto.base.CartAddForm;
+import com.example.prototype.web.dto.base.CartDto;
 
 @Controller
 @RequestMapping("cart")
@@ -50,6 +50,7 @@ public class CartController {
      */
     @GetMapping(value = "/delete/{id}")
     public String deleteItem(@PathVariable int id) {
+        // カート（セッション）から対象商品を削除
         cartService.deleteItem(cart, id);
         return "redirect:/order/";
     }
