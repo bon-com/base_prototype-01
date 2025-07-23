@@ -9,10 +9,8 @@
 <body>
 	<h3>${greeting}</h3>
 	<ul>
-		<li>カートの利用：　<a href="<c:url value='/items/'/>">こちら</a></li>
-	</ul>
-	<ul>
-		<li>購入履歴：　<a href="<c:url value='/history/'/>">こちら</a></li>
+		<li>カートの利用： <a href="${pageContext.request.contextPath}/items/">こちら</a></li>
+		<li>購入履歴： <a href="${pageContext.request.contextPath}/history/">こちら</a></li>
 	</ul>
 </body>
 </html>
